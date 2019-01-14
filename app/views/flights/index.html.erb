@@ -16,7 +16,7 @@
 <p>Choose your flight:</p>
 <ul>
   <% if @results %>
-    <%= form_tag("/", method: "get") do %>
+    <%= form_tag("/bookings/new", method: "get") do %>
       <% @results.each do |result| %>
         <li>
           <input id="flight_id_<%=result.id%>" name="flight_id" type="radio"

@@ -14,15 +14,15 @@ Flight.delete_all
 
 Airport.create([{ location: "NYC" }, { location: "SFO" }, { location: "AMS" }])
 
-Flight.create([{ departure_time: "13:30-01-13-2019", 
+Flight.create([{ departure_time: Time.zone.parse('2019-01-13 13:30'), 
                  departure_airport_id: "1",
-                 arrival_time: "16:30-01-13-2019",
+                 arrival_time: Time.zone.parse("2019-01-13 16:30"),
                  arrival_airport_id: "2"}, 
-               { departure_time: "17:30-01-13-2019", 
+               { departure_time: Time.zone.parse("2019-01-13 17:30"), 
                  departure_airport_id: "2",
-                 arrival_time: "20:30-01-13-2019",
+                 arrival_time: Time.zone.parse("2019-01-13 20:30"),
                  arrival_airport_id: "1"}, 
-               { departure_time: "21:30-01-13-2019", 
+               { departure_time: Time.zone.parse("2019-01-13 21:30"), 
                  departure_airport_id: "1",
-                 arrival_time: "0:30-01-13-2019",
+                 arrival_time: Time.zone.parse("2019-01-14 00:30"),
                  arrival_airport_id: "2"}])
