@@ -5,10 +5,31 @@
   <%= select_tag(:from_code, options_for_select(@airports_array)) %>
   <%= label_tag(:to_code, "Fly to:") %>
   <%= select_tag(:to_code, options_for_select(@airports_array)) %>
-  <%= label_tag(:date, "Date:") %>
+  <%= label_tag(:date, "Departure date:") %>
   <%= select_tag(:date, options_for_select(@dates)) %>
   <%= label_tag(:num_tickets, "Passengers:") %>
   <%= select_tag(:num_tickets, options_for_select(
       [[1, 1], [2, 2], [3, 3], [4, 4]])) %>
   <%= submit_tag("Search") %>
 <% end %>
+
+<p>Choose your flight:</p>
+<ul>
+  <% if @results %>
+    <%= form_tag("/", method: "get") do %>
+      <% @results.each do |result| %>
+        <li>
+          <input id="flight_id_<%=result.id%>" name="flight_id" type="radio"
+          value="<%=result.id%>">
+          <label for="flight_id_<%=result.id%>">
+            <h2><%= result.departure_airport.location %> to
+            <%= result.arrival_airport.location %> <br>
+            departure time: <%= result.departure_time %></h2>
+          </label>
+        </li>
+      <% end %>
+      <%= hidden_field_tag(:num_tickets, @num_tickets) %>
+      <%= submit_tag("Next step") %>
+    <% end %>
+  <% end %>
+</ul>
