@@ -1,0 +1,10 @@
+Thank you <%= @passenger.name %>, for booking a flight with us.
+<br>
+Booking id: <%= @passenger.booking_id %>
+Flight details:
+  From : <%= @passenger.booking.flight.departure_airport.location %>,
+  To: <%= @passenger.booking.flight.arrival_airport.location %>,
+  Departure time: <%= @passenger.booking.flight.departure_time %>
+  Arrival time: <%= @passenger.booking.flight.arrival_time %>
+
+  Best regards, Flight Booker App
